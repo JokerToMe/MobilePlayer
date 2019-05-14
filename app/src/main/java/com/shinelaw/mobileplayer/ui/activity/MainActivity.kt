@@ -3,7 +3,9 @@ package com.shinelaw.mobileplayer.ui.activity
 import android.support.v7.widget.Toolbar
 import com.shinelaw.mobileplayer.R
 import com.shinelaw.mobileplayer.base.BaseActivity
+import com.shinelaw.mobileplayer.util.FragmentUtil
 import com.shinelaw.mobileplayer.util.ToolBarManager
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.find
 
 class MainActivity : BaseActivity(),ToolBarManager{
@@ -17,5 +19,14 @@ class MainActivity : BaseActivity(),ToolBarManager{
 
     override fun initData() {
         initMainToolBar()
+    }
+
+    override fun initListener() {
+        super.initListener()
+        bottomBar.setOnTabSelectListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, FragmentUtil.fragmentUtil.getFragment(it)!!,it.toString())
+            transaction.commit()
+        }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<tabs xmlns:android="http://schemas.android.com/apk/res/android">
     <tab
             id="@+id/tab_home"
             icon="@mipmap/tab_home"
@@ -16,4 +16,4 @@
             id="@+id/tab_yuedan"
             icon="@mipmap/tab_qianshou"
             title="悦单"/>
-</PreferenceScreen>
+</tabs>
