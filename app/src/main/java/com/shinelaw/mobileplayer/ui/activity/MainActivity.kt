@@ -25,7 +25,7 @@ class MainActivity : BaseActivity(),ToolBarManager{
         super.initListener()
         bottomBar.setOnTabSelectListener {
             val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.container, FragmentUtil.fragmentUtil.getFragment(it)!!,it.toString())
+            transaction.replace(R.id.container, FragmentUtil.getFragment(it)!!,it.toString())
             transaction.commit()
         }
     }

@@ -3,11 +3,17 @@ package com.shinelaw.mobileplayer.ui.fragment
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 import com.shinelaw.mobileplayer.R
 import com.shinelaw.mobileplayer.adapter.HomeAdapter
 import com.shinelaw.mobileplayer.base.BaseFragment
+import com.shinelaw.mobileplayer.model.HomeItemBean
+import com.shinelaw.mobileplayer.util.ThreadUtil
 import kotlinx.android.synthetic.main.fragment_home.*
 import okhttp3.*
+import org.json.JSONObject
 import java.io.IOException
 
 /**
@@ -21,6 +27,8 @@ import java.io.IOException
  */
 class HomeFragment : BaseFragment() {
 
+    val adapter by lazy { HomeAdapter() }
+
     override fun initView(): View? {
         return layoutInflater.inflate(R.layout.fragment_home,null)
     }
@@ -29,7 +37,6 @@ class HomeFragment : BaseFragment() {
         //初始化recyclerView
         recycleView.layoutManager = LinearLayoutManager(context)
         //适配
-        val adapter = HomeAdapter()
         recycleView.adapter = adapter
     }
 
@@ -39,7 +46,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun loadDatas() {
-        val path = "http://wmapi.yinyuetai.com/component/prefecture.json?&screen=2&type=1"
+        val path = "http://www.yinyuetai.com/mv/get-guess?size=18&callback=jsonp7"
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(path)
@@ -55,8 +62,23 @@ class HomeFragment : BaseFragment() {
 
             override fun onResponse(call: Call, response: Response) {
                 myToast("获取数据成功")
-                val s = response.body().toString()
-                println("返回数据为：$s")
+                val s = response.body()?.string()
+                println("s=$s")
+                val s2 = s?.substring(7, s?.length-1)
+                val gson = Gson()
+                println("s=${s2}")
+                val data = JSONObject(s2)
+                val video = data.getJSONArray("video")
+                //将JsonString转化为Bean类
+                val videoList = gson.fromJson<List<HomeItemBean>>(video.toString(),object :TypeToken<List<HomeItemBean>>(){}.type)
+                println("videoList.size=${videoList.size}")
+                //在主线程中刷新视图
+                ThreadUtil.runOnUIThread(object :Runnable{
+
+                    override fun run() {
+                        adapter.updateList(videoList)
+                    }
+                })
             }
         })
     }

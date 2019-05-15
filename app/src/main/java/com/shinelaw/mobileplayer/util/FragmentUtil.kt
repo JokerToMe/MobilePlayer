@@ -14,17 +14,12 @@ import com.shinelaw.mobileplayer.ui.fragment.YuedanFragment
  * @Author:         ShineLaw
  * @CreateDate:     2019/5/14 10:34
  */
-class FragmentUtil private constructor() { //私有化构造方法
+object FragmentUtil{ //私有化构造方法
 
     val homeFragment by lazy { HomeFragment() }
     val mvFragment by lazy { MvFragment() }
     val vbangFragment by lazy { VbangFragment() }
     val yuedanFragment by lazy { YuedanFragment() }
-
-    //相当于java的static关键字
-    companion object {
-        val fragmentUtil by lazy { FragmentUtil() }
-    }
 
     /**
      * @description 根据tabId获取对应的fragment

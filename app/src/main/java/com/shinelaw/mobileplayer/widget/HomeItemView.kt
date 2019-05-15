@@ -4,7 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
+import com.bumptech.glide.Glide
 import com.shinelaw.mobileplayer.R
+import com.shinelaw.mobileplayer.model.HomeItemBean
+import kotlinx.android.synthetic.main.activity_setting.view.*
+import kotlinx.android.synthetic.main.item_home.view.*
 
 /**
  * @Package:        com.shinelaw.mobileplayer.widget
@@ -14,6 +18,22 @@ import com.shinelaw.mobileplayer.R
  * @CreateDate:     2019/5/14 14:04
  */
 class HomeItemView : RelativeLayout {
+
+    /**
+     * @description 刷新每一条View
+     * @date: 2019/5/15 16:44
+     * @author: ShineLaw
+     * @param
+     * @return
+     */
+    fun setData(data: HomeItemBean) {
+        //歌手
+        song.setText(data.artists[0].artistName)
+        //简介
+        desc.setText(data.title)
+        //图片
+        Glide.with(this).load("http:"+data.image).into(bg);
+    }
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)

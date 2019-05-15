@@ -37,7 +37,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_toRightOf="@id/live"
                 android:textSize="25sp"
-                android:textColor="#00ff00"
+                android:textColor="#ffffff"
                 android:maxLines="1"/>
 
         <TextView
