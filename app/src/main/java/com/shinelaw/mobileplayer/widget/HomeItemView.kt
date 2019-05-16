@@ -32,7 +32,12 @@ class HomeItemView : RelativeLayout {
         //简介
         desc.setText(data.title)
         //图片
-        Glide.with(this).load("http:"+data.image).into(bg);
+        Glide
+            .with(context)
+            .load("http:"+data.image)
+            .centerCrop()
+            .placeholder(R.mipmap.placeholder)
+            .into(bg);
     }
 
     constructor(context: Context?) : super(context)
