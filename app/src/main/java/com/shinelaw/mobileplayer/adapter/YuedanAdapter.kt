@@ -6,15 +6,16 @@ import android.view.ViewGroup
 import com.shinelaw.mobileplayer.model.HomeItemBean
 import com.shinelaw.mobileplayer.widget.HomeItemView
 import com.shinelaw.mobileplayer.widget.LoadMoreView
+import com.shinelaw.mobileplayer.widget.YuedanItemView
 
 /**
  * @Package:        com.shinelaw.mobileplayer.adapter
- * @ClassName:      HomeAdapter
- * @Description:    HomeAdapter
+ * @ClassName:      YuedanAdapter
+ * @Description:    YuedanAdapter
  * @Author:         ShineLaw
  * @CreateDate:     2019/5/14 14:29
  */
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeHolder>() {
+class YuedanAdapter : RecyclerView.Adapter<YuedanAdapter.YuedanHolder>() {
 
     private var list = ArrayList<HomeItemBean>()
 
@@ -45,24 +46,24 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): HomeHolder {
-        return HomeHolder(HomeItemView(p0.context))
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): YuedanAdapter.YuedanHolder {
+        return YuedanAdapter.YuedanHolder(YuedanItemView(p0.context))
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
 
-    override fun onBindViewHolder(p0: HomeHolder, p1: Int) {
+    override fun onBindViewHolder(p0: YuedanAdapter.YuedanHolder, p1: Int) {
         //item数据
         val data = list.get(p1)
         //itemView
-        val itemView = p0.itemView as HomeItemView
+        val itemView = p0.itemView as YuedanItemView
         //item刷新
         itemView.setData(data)
     }
 
-    class HomeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class YuedanHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
     }

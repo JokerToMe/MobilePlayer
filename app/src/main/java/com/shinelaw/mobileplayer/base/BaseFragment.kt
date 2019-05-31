@@ -1,33 +1,20 @@
 package com.shinelaw.mobileplayer.base
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import com.shinelaw.mobileplayer.R
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.runOnUiThread
-import org.jetbrains.anko.support.v4.runOnUiThread
 import org.jetbrains.anko.support.v4.toast
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [BaseFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [BaseFragment.newInstance] factory method to
- * create an instance of this fragment.
- * 所有fragment的基类
- */
+  * @Package:        com.shinelaw.mobileplayer.base
+  * @Description:    所有fragment的基类
+  * @Author:         ShineLaw
+  * @CreateDate:     2019/5/31 15:50
+  */
 abstract class BaseFragment : Fragment(),AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {

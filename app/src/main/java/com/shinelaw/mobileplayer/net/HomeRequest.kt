@@ -12,5 +12,4 @@ import com.shinelaw.mobileplayer.model.HomeItemBean
 class HomeRequest(type:Int,url: String, handler: ResponseHandler<List<HomeItemBean>>) :
     MRequest<List<HomeItemBean>>(type,url, handler) {
 
-
 }

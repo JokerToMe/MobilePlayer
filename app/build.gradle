@@ -44,4 +44,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.2.4'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    //xrecyclerview
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+    //tablayout
+    implementation 'cn.hugeterry.coordinatortablayout:coordinatortablayout:1.2.2'
 }
