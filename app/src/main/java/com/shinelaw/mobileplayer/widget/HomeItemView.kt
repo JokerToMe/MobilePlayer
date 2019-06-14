@@ -7,7 +7,6 @@ import android.widget.RelativeLayout
 import com.bumptech.glide.Glide
 import com.shinelaw.mobileplayer.R
 import com.shinelaw.mobileplayer.model.HomeItemBean
-import kotlinx.android.synthetic.main.activity_setting.view.*
 import kotlinx.android.synthetic.main.item_home.view.*
 
 /**
@@ -28,9 +27,9 @@ class HomeItemView : RelativeLayout {
      */
     fun setData(data: HomeItemBean) {
         //歌手
-        song.setText(data.artists[0].artistName)
+        song.text = data.artists[0].artistName
         //简介
-        desc.setText(data.title)
+        desc.text = data.title
         //图片
         Glide
             .with(context)

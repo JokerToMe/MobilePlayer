@@ -22,7 +22,7 @@ open class MRequest<RESPONSE>(val type: Int, val url: String, val handler: Respo
      */
     fun parseResult(s: String?): RESPONSE {
         println("s=$s")
-        val s2 = s?.substring(7, s?.length - 1)
+        val s2 = s?.substring(7, s.length - 1)
         val gson = Gson()
         println("s=${s2}")
         val data = JSONObject(s2)

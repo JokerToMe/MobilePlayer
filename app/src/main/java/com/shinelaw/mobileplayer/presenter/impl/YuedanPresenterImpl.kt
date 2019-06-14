@@ -1,10 +1,8 @@
 package com.shinelaw.mobileplayer.presenter.impl
 
 import com.shinelaw.mobileplayer.model.HomeItemBean
-import com.shinelaw.mobileplayer.net.HomeRequest
 import com.shinelaw.mobileplayer.net.ResponseHandler
 import com.shinelaw.mobileplayer.net.YuedanRequest
-import com.shinelaw.mobileplayer.presenter.interf.HomePresenter
 import com.shinelaw.mobileplayer.presenter.interf.YuedanPresenter
 import com.shinelaw.mobileplayer.view.YuedanView
 
@@ -18,13 +16,13 @@ import com.shinelaw.mobileplayer.view.YuedanView
 class YuedanPresenterImpl(val view:YuedanView):YuedanPresenter, ResponseHandler<List<HomeItemBean>> {
 
     override fun onError(type: Int, msg: String) {
-        view?.onError(msg)
+        view.onError(msg)
     }
 
     override fun onSuccess(type: Int, result: List<HomeItemBean>) {
         when (type) {
-            YuedanPresenter.typeInitOrRefresh -> view?.loadSuccess(result)
-            YuedanPresenter.typeLoadMore -> view?.loadMoreSuccess(result)
+            YuedanPresenter.typeInitOrRefresh -> view.loadSuccess(result)
+            YuedanPresenter.typeLoadMore -> view.loadMoreSuccess(result)
         }
     }
 
